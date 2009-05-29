@@ -5,11 +5,10 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "integritray"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{CCMenu support for Integrity}
     gem.email = "josh@digitalpulp.com"
     gem.homepage = "http://github.com/jfrench/integritray"
     gem.authors = ["Josh French"]
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
 rescue LoadError
