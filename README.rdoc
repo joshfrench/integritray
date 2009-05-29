@@ -1,6 +1,20 @@
 = integritray
 
-Description goes here.
+Adds a CruiseControl.rb-style XML feed to Integrity (http://integrityapp.com)
+for use with CCMenu and other tray items.
+
+== Usage
+Install the integritray gem: 
+  gem install jfrench-integritray
+
+Require in your Integrity application's config.ru:
+  require 'integrity/integritray'
+  
+Point CCMenu or your tray item of choice to the feed URL:
+  http://my.integration.server/projects.xml
+  
+You may have to manually specify that this is a CruiseControl.rb-type server;
+CCMenu has trouble determining which type of server to treat this as.
 
 == Copyright
 
