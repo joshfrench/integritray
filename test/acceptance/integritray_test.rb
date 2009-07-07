@@ -38,8 +38,8 @@ class IntegritrayTest < Test::Unit::AcceptanceTestCase
     assert_have_tag("projects/project[@lastbuildlabel='#{commit.short_identifier}']")
     assert_have_tag("projects/project[@weburl='#{project_url(project)}']")
     assert_have_tag("projects/project[@category='#{project.branch}']")
-    assert_have_tag("projects/project[@activity='Sleeping']")
-    assert_have_tag("projects/project[@lastbuildstatus='Unknown']")
+    assert_have_tag("projects/project[@activity='Building']")
+    assert_have_tag("projects/project[@lastbuildstatus='Success']")
   end
   
   scenario "projects.xml has a tag representing my failed project" do

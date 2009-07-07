@@ -21,7 +21,7 @@ class Integrity::App < Sinatra::Default
       opts = {}
       opts['name']     = project.name
       opts['category'] = project.branch
-      opts['activity'] = project.building? ? 'Building' : 'Sleeping'
+      opts['activity'] = activity(project.last_commit.status)
       opts['webUrl']   = project_url(project)
       if project.last_commit
         opts['lastBuildStatus'] = build_status(project.last_commit.status)
@@ -31,10 +31,17 @@ class Integrity::App < Sinatra::Default
       opts
     end
     
+    def activity(status)
+      case status
+      when :success, :failed then 'Sleeping'
+      when :pending then 'Building'
+      else 'Sleeping'
+      end      
+    end
+    
     def build_status(status)
       case status
-      when :success then 'Success'
-      when :pending then 'Unknown'
+      when :success, :pending then 'Success'
       when :failed then 'Failure'
       else 'Unknown'
       end
