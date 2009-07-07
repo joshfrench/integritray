@@ -2,7 +2,7 @@
 # I've been copying this into an unpacked version of Integrity and running it
 # there.
 
-require File.dirname(__FILE__) + "/../helpers/acceptance"
+require File.dirname(__FILE__) + "/acceptance_helper"
 require 'integrity/integritray'
 
 class IntegritrayTest < Test::Unit::AcceptanceTestCase
