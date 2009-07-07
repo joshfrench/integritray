@@ -25,6 +25,34 @@ class IntegritrayTest < Test::Unit::AcceptanceTestCase
     assert_have_tag("projects/project[@weburl='#{project_url(project)}']")
     assert_have_tag("projects/project[@category='#{project.branch}']")
     assert_have_tag("projects/project[@activity='Sleeping']")
-    assert_have_tag("projects/project[@lastbuildstatus='#{commit.status}']")
+    assert_have_tag("projects/project[@lastbuildstatus='Success']")
+  end
+  
+  scenario "projects.xml has a tag representing my pending project" do
+    project = Project.gen(:integrity, :public => true, :commits => 2.of { Commit.gen(:pending)})
+    commit = project.last_commit
+    visit "/projects.xml"
+
+    assert_have_tag("projects")
+    assert_have_tag("projects/project[@name='Integrity']")
+    assert_have_tag("projects/project[@lastbuildlabel='#{commit.short_identifier}']")
+    assert_have_tag("projects/project[@weburl='#{project_url(project)}']")
+    assert_have_tag("projects/project[@category='#{project.branch}']")
+    assert_have_tag("projects/project[@activity='Sleeping']")
+    assert_have_tag("projects/project[@lastbuildstatus='Unknown']")
+  end
+  
+  scenario "projects.xml has a tag representing my failed project" do
+    project = Project.gen(:integrity, :public => true, :commits => 2.of { Commit.gen(:failed)})
+    commit = project.last_commit
+    visit "/projects.xml"
+
+    assert_have_tag("projects")
+    assert_have_tag("projects/project[@name='Integrity']")
+    assert_have_tag("projects/project[@lastbuildlabel='#{commit.short_identifier}']")
+    assert_have_tag("projects/project[@weburl='#{project_url(project)}']")
+    assert_have_tag("projects/project[@category='#{project.branch}']")
+    assert_have_tag("projects/project[@activity='Sleeping']")
+    assert_have_tag("projects/project[@lastbuildstatus='Failure']")
   end
 end
