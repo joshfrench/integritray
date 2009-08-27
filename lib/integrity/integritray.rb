@@ -21,7 +21,7 @@ class Integrity::App < Sinatra::Default
       opts = {}
       opts['name']     = project.name
       opts['category'] = project.branch
-      opts['activity'] = activity(project.last_commit.status)
+      opts['activity'] = activity(project.last_commit.status) if project.last_commit
       opts['webUrl']   = project_url(project)
       if project.last_commit
         opts['lastBuildStatus'] = build_status(project.last_commit.status)
