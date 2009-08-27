@@ -55,4 +55,18 @@ class IntegritrayTest < Test::Unit::AcceptanceTestCase
     assert_have_tag("projects/project[@activity='Sleeping']")
     assert_have_tag("projects/project[@lastbuildstatus='Failure']")
   end
+
+  scenario "projects.xml has a tag representing my unbuilt project" do
+    project = Project.gen(:integrity, :public => true)
+    commit = project.last_commit
+    puts commit.inspect
+    visit "/projects.xml"
+
+    assert_have_tag("projects")
+    assert_have_tag("projects/project[@name='Integrity']")
+    assert_have_tag("projects/project[@weburl='#{project_url(project)}']")
+    assert_have_tag("projects/project[@category='#{project.branch}']")
+    assert_have_no_tag("projects/project[@activity]")
+    assert_have_no_tag("projects/project[@lastbuildstatus]")
+  end
 end
