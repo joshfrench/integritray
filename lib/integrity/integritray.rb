@@ -1,6 +1,4 @@
-require 'sinatra/base'
-
-module Sinatra
+module Integrity
   module Integritray
     module Helpers
 
