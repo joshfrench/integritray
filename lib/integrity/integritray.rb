@@ -8,12 +8,12 @@ module Integrity
         opts = {}
         opts['name']     = project.name
         opts['category'] = project.branch
-        opts['activity'] = activity(project.last_commit.status) if project.last_commit
+        opts['activity'] = activity(project.last_build.status) if project.last_build
         opts['webUrl']   = project_url(project)
-        if project.last_commit
-          opts['lastBuildStatus'] = build_status(project.last_commit.status)
-          opts['lastBuildLabel']  = project.last_commit.short_identifier
-          opts['lastBuildTime']   = project.last_commit.build.completed_at if project.last_commit.build
+        if project.last_build
+          opts['lastBuildStatus'] = build_status(project.last_build.status)
+          opts['lastBuildLabel']  = project.last_build.commit.short_identifier
+          opts['lastBuildTime']   = project.last_build.completed_at
         end
         opts
       end
