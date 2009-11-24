@@ -55,5 +55,4 @@ module Integrity
     end
 
   end # Integritray
-  register Integrity::Integritray
 end # Integrity
