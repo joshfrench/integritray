@@ -8,9 +8,11 @@ begin
     gem.summary = %Q{CCMenu support for Integrity}
     gem.email = "josh@digitalpulp.com"
     gem.homepage = "http://github.com/jfrench/integritray"
-    gem.authors = ["Josh French"]
-  end
+    gem.authors = ["Josh French", "Justin Smestad"]
 
+    gem.add_dependency 'sinatra', '>= 0.9.4'
+  end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
