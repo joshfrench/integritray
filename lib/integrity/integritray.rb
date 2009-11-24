@@ -1,3 +1,5 @@
+require 'sinatra/base'
+
 module Integrity
   module Integritray
     module Helpers
@@ -53,5 +55,5 @@ module Integrity
     end
 
   end # Integritray
-  register Integritray
+  register Integrity::Integritray
 end # Integrity
