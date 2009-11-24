@@ -52,11 +52,6 @@ module Sinatra
         end
       end
 
-      # Move route definition with the literal routes where it won't be hidden behind any general matchers
-      xml_route = routes['GET'].pop
-      first_literal_route = routes['GET'].find { |route| route.first.inspect.include? 'integrity' }
-      routes['GET'].insert(routes['GET'].index(first_literal_route), xml_route)
-
     end
 
   end # Integritray
