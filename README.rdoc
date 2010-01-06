@@ -5,13 +5,15 @@ for use with CCMenu and other tray items.
 
 == Usage
 Install the integritray gem: 
-  gem install jfrench-integritray
+  gem install gvarela-integritray
 
 Require in your Integrity application's config.ru:
   require 'integrity/integritray'
   
 Point CCMenu or your tray item of choice to the feed URL:
   http://my.integration.server/projects.xml
+  to view private projects
+  http://user:password@my.integration.server/projects.xml?private=true
   
 You may have to manually specify that this is a CruiseControl.rb-type server;
 CCMenu has trouble determining which type of server to treat this as.
