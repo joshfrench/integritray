@@ -40,6 +40,7 @@ module Integrity
       app.helpers Integritray::Helpers
 
       app.get '/projects.xml' do
+        login_required if params["private"]
         builder do |xml|
           @projects = authorized? ? Project.all : Project.all(:public => true)
           response["Content-Type"] = "application/xml; charset=utf-8"
