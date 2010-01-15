@@ -5,7 +5,7 @@ for use with CCMenu and other tray items.
 
 == Usage
 Install the integritray gem: 
-  gem install gvarela-integritray
+  gem install integritray
 
 Require in your Integrity application's config.ru:
   require 'integrity/integritray'

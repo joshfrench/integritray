@@ -1,2 +1,6 @@
+= 0.2.2
+Invoke authentication on private projects [Gabe Varela]
+= 0.2.0
+Updates for compatibility with latest Integrity [Smestad]
 = 0.1.1
 Fix build status when project is pending [Jonas Nicklas]
